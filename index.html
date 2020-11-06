@@ -20,15 +20,19 @@
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 bd-sidebar">
-                    <form role="search" class="bd-search">
-                        <label for="Search">Search For A City:</label>
-                        <input type="search" class="form-control" placeholder="Search...">
+                <div class="input-group col-md-3 bd-sidebar">
+                    <form role="search" class="input-group bd-search">
+                        <label class="input-group" for="search"><strong>Search For A City:</strong></label>
+                        <input type="text" class="input-group form-control" id="city" placeholder="Search...">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit" id="cityName">@</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
 
-		<script src="./assets/app.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./assets/app.js"></script>
 	</body>
 </html>
