@@ -11,7 +11,8 @@
 			crossorigin="anonymous"
 		/>
 		<title>Weather Dash</title>
-	</head>
+    </head>
+    <!-- start of navbar -->
 	<body>
 		<nav class="navbar navbar-light bg-success">
             <P class="text-justify">
@@ -25,6 +26,7 @@
             <div class="row">
                 <div class="input-group col-md-3 bd-sidebar">
                     <div class="card-body">
+                        <!-- start of form for user city input -->
                         <form role="search" class="input-group bd-search">
                             <label class="input-group border-bottom" for="search"><strong>Search For A City:</strong></label>
                             <input type="text" class="input-group form-control" id="city" placeholder="Search...">
@@ -32,6 +34,7 @@
                                 <button class="btn btn-outline-primary" type="submit" id="cityName">@</button>
                             </div>
                         </form>
+                        <!-- start of button list items for recent citys -->
                         <div>
                             <ul class="list-group text-left">
                                 <button class="list-group-item text-left btn btn-outline-secondary" type="button" id="recent_city_0">
@@ -54,6 +57,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- start of current weather section -->
                 <aside class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
@@ -79,6 +83,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            <!-- start of 5 day forcast cards -->
                             <div class="card-body">
                                 <h2 id="city_name">
                                     5 Day Forecast:
@@ -161,7 +166,7 @@
                 </aside>
             </div>
         </div>
-
+        <!-- source scripts start here -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./assets/app.js"></script>
