@@ -23,7 +23,7 @@ $(document).ready(function () {
 		let cityInput = $("input").val();
 		console.log(cityInput);
 		getApi(cityInput);
-		// getForecast(cityLat, cityLong)
+		
 	});
 
 	function getApi(cityInput) {
@@ -67,8 +67,8 @@ $(document).ready(function () {
 			})
 			.then(function (data) {
 				console.log(data);
-                dispayWeather(data);
-                displayForcast(data);
+				dispayWeather(data);
+				displayForcast(data);
 				let iconCode = data.current.weather[0].icon;
 				let iconUrl =
 					"http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
@@ -92,19 +92,19 @@ $(document).ready(function () {
 			$("#index").css("color", "white");
 		}
 	}
-    // function for displaying forecasted weather 5 days
+	// function for displaying forecasted weather 5 days
 	function displayForcast(data) {
 		for (i = 0; i < 5; i++) {
 			let iconCode = data.daily[i].weather[0].icon;
 			let iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-			let addDay = i + 1
+			let addDay = i + 1;
 			let fDay = moment(date, "MM/DD/YYYY")
-				.add(addDay, 'd')
+				.add(addDay, "d")
 				.format("MM/DD/YYYY");
 			$(`#forecast_${i}_title`).text(fDay);
 			$(`#forecast_${i}_img`).attr("src", iconUrl);
 			$(`#forecast_${i}_temp`).text(data.daily[i].temp.max + " F");
-            $(`#forecast_${i}_hum`).text(data.daily[i].humidity + " %");
-        }
+			$(`#forecast_${i}_hum`).text(data.daily[i].humidity + " %");
+		}
 	}
 });
