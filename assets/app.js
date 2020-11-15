@@ -10,6 +10,7 @@ $(document).ready(function () {
 		"Denver",
 		"Stockholm",
 	];
+	
 	for (i = 0; i < startUp.length; i++) {
 		$(`#recent_city_${i}`).html(startUp[i]);
 	}
@@ -17,11 +18,14 @@ $(document).ready(function () {
 
 	// }
 
+	// window.onload = city
+
 	// on submit function with prevent default for form user input
 	$("form").on("submit", function (e) {
 		e.preventDefault();
 		let cityInput = $("input").val();
 		console.log(cityInput);
+		window.localStorage.setItem("uCity", cityInput);
 		getApi(cityInput);
 		
 	});
