@@ -17,8 +17,10 @@ $(document).ready(function () {
 	// if (window.localStorage.length === 0) {
 
 	// }
-
-	// window.onload = city
+	// when loading the page it will show stockholm forcast and current weather
+	window.onload = $("input").val("Stockholm");
+	let cityInput = $("input").val();
+	getApi(cityInput);
 
 	// on submit function with prevent default for form user input
 	$("form").on("submit", function (e) {
