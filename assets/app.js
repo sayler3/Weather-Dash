@@ -13,6 +13,11 @@ $(document).ready(function () {
 	
 	for (i = 0; i < startUp.length; i++) {
 		$(`#recent_city_${i}`).html(startUp[i]);
+		console.log((`#recent_city_${i}`))
+		// $(`#recent_city_${i}`).on("click", function(){
+		// 	console.log(cityInput);
+		// 	getApi(cityInput);
+		// })
 	}
 	// if (window.localStorage.length === 0) {
 
