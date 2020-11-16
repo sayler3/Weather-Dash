@@ -1,5 +1,9 @@
 $(document).ready(function () {
+	let recentCity = document.querySelector(".list-group-1");
+	let startCity = document.querySelector(".list-group-2");
+
 	let date = moment().format("MM/DD/YYYY");
+
 	let startUp = [
 		"San Francisco",
 		"Oakland",
@@ -10,10 +14,20 @@ $(document).ready(function () {
 		"Denver",
 		"Stockholm",
 	];
-	
+	// function to intialize startUp screen
+	window.onload = function startUpDash() {
+		$("input").val("Stockholm");
+		let cityInput = $("input").val();
+		getApi(cityInput);
+
+		for (var i = 0; i < startUp.length; i++) {
+			newCityButton(startUp[i], startCity);
+		}
+	};
+
 	for (i = 0; i < startUp.length; i++) {
 		$(`#recent_city_${i}`).html(startUp[i]);
-		console.log((`#recent_city_${i}`))
+		console.log(`#recent_city_${i}`);
 		// $(`#recent_city_${i}`).on("click", function(){
 		// 	console.log(cityInput);
 		// 	getApi(cityInput);
@@ -22,10 +36,6 @@ $(document).ready(function () {
 	// if (window.localStorage.length === 0) {
 
 	// }
-	// when loading the page it will show stockholm forcast and current weather
-	window.onload = $("input").val("Stockholm");
-	let cityInput = $("input").val();
-	getApi(cityInput);
 
 	// on submit function with prevent default for form user input
 	$("form").on("submit", function (e) {
@@ -34,7 +44,6 @@ $(document).ready(function () {
 		console.log(cityInput);
 		window.localStorage.setItem("uCity", cityInput);
 		getApi(cityInput);
-		
 	});
 
 	function getApi(cityInput) {
@@ -55,7 +64,6 @@ $(document).ready(function () {
 				console.log(data);
 				let cityLat = data.coord.lat;
 				let cityLong = data.coord.lon;
-				console.log(cityLat, cityLong);
 				getForecast(cityLat, cityLong);
 				$("#city_name").text(data.name + " (" + date + ")");
 			});
@@ -117,5 +125,21 @@ $(document).ready(function () {
 			$(`#forecast_${i}_temp`).text(data.daily[i].temp.max + " F");
 			$(`#forecast_${i}_hum`).text(data.daily[i].humidity + " %");
 		}
+	}
+
+	function newCityButton(cityName, location) {
+		let cityEl = document.createElement("button");
+		$(cityEl).attr("type", "button");
+		$(cityEl).addClass("list-group-item text-left btn btn-outline-secondary list-group-item-action");
+		$(cityEl).text(cityName);
+		$(cityEl).attr("value", cityName);
+		location.prepend(cityEl);
+		$(cityEl).on("click", function () {
+			let allCity = document.querySelectorAll(".list-group-item");
+			for (var i = 0; i < allCity.length; i++) {
+				allCity[i].classList.remove("active");
+			}
+			getApi(cityEl.value);
+		});
 	}
 });
