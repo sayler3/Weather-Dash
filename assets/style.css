@@ -4,3 +4,8 @@ body {
     background-size: cover;
 
 }
+
+.px-1 {
+    width: auto;
+    height: auto;
+}
