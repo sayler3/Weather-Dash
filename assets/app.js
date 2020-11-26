@@ -1,17 +1,16 @@
 $(document).ready(function () {
 	let recentCity = document.querySelector(".list-group-1");
 	let startCity = document.querySelector(".list-group-2");
+	// let userCities = json.parse(localStorage.getItem("uCity"));
 
 	let date = moment().format("MM/DD/YYYY");
 
 	let startUp = [
 		"San Francisco",
-		"Oakland",
 		"Atlanta",
 		"Chicago",
 		"New York",
 		"Seattle",
-		"Denver",
 		"Stockholm",
 	];
 	// function to intialize startUp screen
@@ -39,7 +38,7 @@ $(document).ready(function () {
 		const key = "&appid=a1e39e520ce0eb06a39ade64faa243cd";
 
 		let requestUrl =
-			"http://api.openweathermap.org/data/2.5/weather?q=" +
+			"https://api.openweathermap.org/data/2.5/weather?q=" +
 			cityInput +
 			"&units=imperial&lang=en" +
 			key;
@@ -118,7 +117,9 @@ $(document).ready(function () {
 	function newCityButton(cityName, location) {
 		let cityEl = document.createElement("button");
 		$(cityEl).attr("type", "button");
-		$(cityEl).addClass("list-group-item text-left btn btn-outline-secondary list-group-item-action");
+		$(cityEl).addClass(
+			"list-group-item text-left btn btn-outline-secondary list-group-item-action"
+		);
 		$(cityEl).text(cityName);
 		$(cityEl).attr("value", cityName);
 		location.prepend(cityEl);
